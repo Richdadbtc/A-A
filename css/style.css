@@ -40,7 +40,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 h2 {
@@ -117,6 +117,16 @@ header {
     padding: 20px 0;
 }
 
+.header-title {
+    color: #2e8b57; /* Forest green color */
+    white-space: nowrap; /* Keeps text on a single line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -128,13 +138,13 @@ header {
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 0;
     color: var(--primary);
 }
 
 .logo span {
-    color: var(--secondary-dark);
+    color: var(--primary);
 }
 
 nav ul {
@@ -148,7 +158,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--dark);
+    color: var(--primary);
     font-weight: 600;
     transition: color 0.3s;
     position: relative;
@@ -216,6 +226,92 @@ nav ul li a:hover::after {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+/* Hero Slider Styles */
+.hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.prev-btn, .next-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 /* Services Section */
@@ -383,7 +479,7 @@ nav ul li a:hover::after {
 
 .testimonial {
     padding: 30px;
-    background: rgb(247, 243, 243);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     margin: 20px;
     backdrop-filter: blur(5px);
@@ -399,9 +495,36 @@ nav ul li a:hover::after {
     font-weight: 700;
 }
 
+/* Testimonial-role */
 .testimonial-role {
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    color: white;
+    transform: scale(1.1);
 }
 
 /* Contact Section */

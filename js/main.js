@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // WhatsApp button animation
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    if (whatsappBtn) {
+        // Add a subtle bounce effect every few seconds to draw attention
+        setInterval(() => {
+            whatsappBtn.classList.add('bounce');
+            setTimeout(() => {
+                whatsappBtn.classList.remove('bounce');
+            }, 1000);
+        }, 10000);
+    }
+
     // Testimonial slider (if exists on page)
     const testimonialSlider = document.querySelector('.testimonial-slider');
     if (testimonialSlider) {
@@ -40,6 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Add the bounce animation to CSS
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+        60% {transform: translateY(-5px);}
+    }
+    .bounce {
+        animation: bounce 1s ease;
+    }
+    </style>
+`);
 
 function initTestimonialSlider() {
     const testimonials = [
@@ -82,3 +108,47 @@ function initTestimonialSlider() {
         showTestimonial(currentTestimonial);
     }, 5000);
 }
+
+// Hero Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+    
+    // Function to show a specific slide
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Add active class to current slide
+        slides[index].classList.add('active');
+    }
+    
+    // Function to show next slide
+    function nextSlide() {
+        currentSlide++;
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+        showSlide(currentSlide);
+    }
+    
+    // Function to show previous slide
+    function prevSlide() {
+        currentSlide--;
+        if (currentSlide < 0) {
+            currentSlide = slides.length - 1;
+        }
+        showSlide(currentSlide);
+    }
+    
+    // Event listeners for buttons
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 5000);
+});
