@@ -11,28 +11,29 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="A & A Global Leasing Services Logo">
-                <h1>A & A <span>Global Leasing</span></h1>
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="A & A Global Leasing Services Logo">
+                    <!-- Text heading removed as requested -->
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="mainMenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="haulage-logistics.html">Haulage & Logistics</a></li>
+                        <li><a href="fleet-management.html">Fleet Management</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="whistle-blowing.html" class="btn btn-secondary">Whistle Blowing</a></li>
+                    </ul>
+                </nav>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul id="mainMenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="haulage-logistics.html">Haulage & Logistics</a></li>
-                    <li><a href="fleet-management.html">Fleet Management</a></li>
-                    <li><a href="media.html">Media</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="whistle-blowing.html" class="btn btn-secondary">Whistle Blowing</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </header>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -54,22 +55,26 @@
             
             <div class="whistleblowing-form">
                 <h3>Submit a Report</h3>
-                <form id="whistleblowingForm">
+                <form id="whistleblowingForm" action="https://formsubmit.co/info@a-aglobaleasing.com" method="POST">
+                    <input type="hidden" name="_subject" value="Whistle Blowing Report">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://a-aglobaleasing.com/thank-you.html">
+                    
                     <div class="form-group">
                         <label for="wb-name">Your Name (Optional)</label>
-                        <input type="text" id="wb-name" name="wb-name">
+                        <input type="text" id="wb-name" name="name">
                     </div>
                     <div class="form-group">
                         <label for="wb-email">Your Email (Optional)</label>
-                        <input type="email" id="wb-email" name="wb-email">
+                        <input type="email" id="wb-email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="wb-phone">Your Phone (Optional)</label>
-                        <input type="tel" id="wb-phone" name="wb-phone">
+                        <input type="tel" id="wb-phone" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="wb-subject">Subject of Report</label>
-                        <select id="wb-subject" name="wb-subject" required>
+                        <select id="wb-subject" name="subject" required>
                             <option value="">Select a category</option>
                             <option value="fraud">Fraud or Financial Misconduct</option>
                             <option value="harassment">Harassment or Discrimination</option>
@@ -80,16 +85,11 @@
                     </div>
                     <div class="form-group">
                         <label for="wb-details">Detailed Description</label>
-                        <textarea id="wb-details" name="wb-details" required placeholder="Please provide as much detail as possible about the incident, including dates, times, locations, and persons involved."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="wb-evidence">Evidence (Optional)</label>
-                        <input type="file" id="wb-evidence" name="wb-evidence">
-                        <small>You may attach supporting documents, photos, or other evidence (max 5MB)</small>
+                        <textarea id="wb-details" name="message" required placeholder="Please provide as much detail as possible about the incident, including dates, times, locations, and persons involved."></textarea>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="wb-anonymous" id="wb-anonymous">
+                            <input type="checkbox" name="anonymous" id="wb-anonymous">
                             I wish to remain anonymous
                         </label>
                     </div>
@@ -106,7 +106,7 @@
                     <li>Thorough investigation of all credible claims</li>
                     <li>Appropriate action based on investigation findings</li>
                 </ul>
-                <p>For questions about our whistleblowing policy or process, please contact our Compliance Officer at compliance@aaglobaleasing.com.</p>
+                <p>For questions about our whistleblowing policy or process, please contact our Compliance Officer at info@a-aglobaleasing.com.</p>
             </div>
         </div>
     </section>
@@ -121,7 +121,7 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/a-a-global-leasing-services-ltd/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -159,13 +159,13 @@
                         <div class="contact-icon">
                             <i class="fas fa-phone-alt"></i>
                         </div>
-                        <div>+234 123 456 7890</div>
+                        <div>+234 906 2011 411</div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div>info@aaglobaleasing.com</div>
+                        <div>info@a-aglobaleasing.com</div>
                     </div>
                 </div>
             </div>

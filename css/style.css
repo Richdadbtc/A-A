@@ -133,8 +133,8 @@ header {
 }
 
 .logo img {
-    height: 50px;
-    margin-right: 10px;
+    max-height: 60px; /* Default size for mobile */
+    width: auto;
 }
 
 .logo h1 {
@@ -1015,6 +1015,170 @@ footer {
     color: var(--primary);
 }
 
+/* Client Logo Slider */
+.clients-section {
+    margin: 60px 0;
+    overflow: hidden;
+}
+
+.clients-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.clients-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    width: calc(200px * 14); /* Width of each logo * number of logos (including duplicates) */
+}
+
+.client-logo {
+    flex: 0 0 200px;
+    height: 100px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.client-logo:hover {
+    transform: scale(1.05);
+}
+
+.client-logo img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 7)); /* Width of each logo * number of original logos */
+    }
+}
+
+/* Pause animation on hover */
+.clients-slider:hover .clients-track {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .client-logo {
+        flex: 0 0 150px;
+        height: 80px;
+        margin: 0 10px;
+    }
+    
+    .clients-track {
+        width: calc(150px * 14);
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-150px * 7));
+        }
+    }
+}
+
+
+
+/* Updated Leadership/Team Section Styling - Horizontal Row */
+.leadership-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.leader-card {
+    display: flex;
+    flex-direction: column;
+    background: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 1.5rem;
+}
+
+.leader-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.leader-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.leader-info h3 {
+    color: #2e8b57;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.leader-role {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .leader-card {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .leadership-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .leader-card {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .leader-card {
+        max-width: 100%;
+    }
+    
+    .leader-img {
+        height: 250px;
+    }
+}
+
+
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .about-content,
@@ -1110,5 +1274,12 @@ footer {
     .mission-card, .vision-card,
     .whistleblowing-form, .contact-form {
         padding: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo img {
+        max-height: 90px; /* Larger size for desktop */
+        width: auto;
     }
 }
