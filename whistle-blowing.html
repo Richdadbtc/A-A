@@ -8,6 +8,14 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Add Email.js library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Initialize EmailJS with your public key
+            emailjs.init("kNW1Ga3d7HxoY2LVl"); // Replace with your actual EmailJS public key
+        })();
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -55,11 +63,7 @@
             
             <div class="whistleblowing-form">
                 <h3>Submit a Report</h3>
-                <form id="whistleblowingForm" action="https://formsubmit.co/info@a-aglobaleasing.com" method="POST">
-                    <input type="hidden" name="_subject" value="Whistle Blowing Report">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://a-aglobaleasing.com/thank-you.html">
-                    
+                <form id="whistleblowingForm">
                     <div class="form-group">
                         <label for="wb-name">Your Name (Optional)</label>
                         <input type="text" id="wb-name" name="name">
@@ -76,11 +80,11 @@
                         <label for="wb-subject">Subject of Report</label>
                         <select id="wb-subject" name="subject" required>
                             <option value="">Select a category</option>
-                            <option value="fraud">Fraud or Financial Misconduct</option>
-                            <option value="harassment">Harassment or Discrimination</option>
-                            <option value="safety">Safety Violations</option>
-                            <option value="ethical">Ethical Violations</option>
-                            <option value="other">Other</option>
+                            <option value="Fraud or Financial Misconduct">Fraud or Financial Misconduct</option>
+                            <option value="Harassment or Discrimination">Harassment or Discrimination</option>
+                            <option value="Safety Violations">Safety Violations</option>
+                            <option value="Ethical Violations">Ethical Violations</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -176,5 +180,46 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById('whistleblowingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Get form values
+            const name = document.getElementById('wb-name').value || 'Anonymous';
+            const email = document.getElementById('wb-email').value || 'Not provided';
+            const phone = document.getElementById('wb-phone').value || 'Not provided';
+            const subject = document.getElementById('wb-subject').value;
+            const message = document.getElementById('wb-details').value;
+            const anonymous = document.getElementById('wb-anonymous').checked;
+            
+            // Prepare template parameters
+            const templateParams = {
+                to_email: 'info@a-aglobaleasing.com',
+                subject: 'Whistle Blowing Report: ' + subject,
+                from_name: anonymous ? 'Anonymous Reporter' : name,
+                message: message,
+                reporter_email: anonymous ? 'Anonymous' : email,
+                reporter_phone: anonymous ? 'Anonymous' : phone,
+                is_anonymous: anonymous ? 'Yes' : 'No'
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_cq6yyfg', 'template_aojnhme', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    window.location.href = 'thank-you.html';
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('There was an error submitting your report. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Report';
+                });
+        });
+    </script>
 </body>
 </html>
